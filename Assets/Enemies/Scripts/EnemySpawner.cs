@@ -10,11 +10,7 @@ public class EnemySpawner : MonoBehaviour {
     public float spawnZ;
     public GameObject[] enemyTypes;
     public GameObject[] bossTypes;
-    private bool spawnBoss;
-
-    private void Start() {
-        SpawnEnemies();
-    }
+    public bool spawnBoss;
 
     public void SpawnEnemies() {
         int spawnAmount = Random.Range(spawnAmountMin, spawnAmountMax); // generates an amount of enemies to spawn

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: knightMovement
   m_EditorClassIdentifier: 
   speed: 3
-  senseRange: 7
+  senseRange: 194.62

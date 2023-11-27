@@ -44,7 +44,9 @@ public class PlayerHandler : MonoBehaviour {
                 hurt = false; // set the player to not being hurt
                 hurtTime = hurtTimeMax; // set the hurt time to the max hurt time
             } else {
-                this.matInst.color = Color.Lerp(Color.white, Color.red, hurtTime / hurtTimeMax); // lerp between the models base colour and red when hurt, so it fades away
+                if (this.matInst != null) {
+                    this.matInst.color = Color.Lerp(Color.white, Color.red, hurtTime / hurtTimeMax); // lerp between the models base colour and red when hurt, so it fades away
+                }
                 hurtTime -= Time.deltaTime; // decrease the hurt time
             }
         }
