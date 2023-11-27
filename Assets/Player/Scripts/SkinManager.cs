@@ -89,7 +89,9 @@ public class SkinManager : MonoBehaviour {
 			iconTexture.filterMode = FilterMode.Point;
 			//iconTexture.alphaIsTransparency = true;
 			iconTexture.EncodeToPNG();
-			image.sprite = Sprite.Create(iconTexture, new Rect(0.0f, 0.0f, iconTexture.width, iconTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+			if (image != null) {
+				image.sprite = Sprite.Create(iconTexture, new Rect(0.0f, 0.0f, iconTexture.width, iconTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+			}
 		}
 	}
 

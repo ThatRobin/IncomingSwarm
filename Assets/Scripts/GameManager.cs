@@ -11,13 +11,10 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour {
 
     public string username;
-    public GameObject world;
-    
+	public int seed = 0;
 	public GameObject player;
 	public GameObject clientPlayer;
 
-	public int seed = 0;
-	TerrainGeneration terrainGenerator;
 
 	public GameObject hud;
 	public GameObject pauseScreen;
@@ -90,14 +87,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void SetupWorld(int seed, bool slim) {
-		Vector3 position = InitializeTerrain(); // set the starting position to the return value of the terrain being generated
-		SpawnPlayer(position, slim); // spawn the player
-	}
-
-	Vector3 InitializeTerrain() {
-		terrainGenerator = world.GetComponent<TerrainGeneration>(); // get the terrain generator
-		terrainGenerator.InitializeGeneration(seed); // initialize the generation
-		return terrainGenerator.startingRoom.transform.position + new Vector3(0, 3, 0); // set the starting point to 3 units above the starting room positon to make sure the player is not spawned inside the floor
+		SpawnPlayer(new Vector3(0f, 0.3f, 0f), slim); // spawn the player
 	}
 
 	void SpawnPlayer(Vector3 spawnPoint, bool slim) {
@@ -124,9 +114,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void RestartGame() {
-		for (int i = 0; i < world.transform.childCount; i++) { // for each terrain chunk
-			Destroy(world.transform.GetChild(i).gameObject); // destroy it
-        }
 		Destroy(clientPlayer); // destroy the player
 		seed = Random.Range(int.MinValue, int.MaxValue); // create a new random seed
 		if (username != "") { // if the username exists
